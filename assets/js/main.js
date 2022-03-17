@@ -2,11 +2,12 @@ $(document).ready(function(){
     var urlsky = 'https://sky-frontend.herokuapp.com/movies'; 
     var primeiraVezSeries = true;
     var primeiraVezCanais = true;
-    
+    var filmes = [];
+
     $.get(urlsky,function(data){
         var arraySessionsFilmes = ['sessonMarvel', 'sessionComics', 'sessionNacionais', 'sessionMaisTemidos'];
 
-        var filmes = data.contents;
+        filmes = data.contents;
         AddImagensFilmes(filmes, arraySessionsFilmes);
 
         $("#nav-series-tab").on("click", function(){   
@@ -44,11 +45,44 @@ $(document).ready(function(){
             var icon = (item.isBlocked) ? "" : '<div class="iconCarrinho"><img class="carrinho" src="./assets/images/icon_carrinho.png"></div>';
             
             var image = item.images[0].url;
-            var itemHtml = '<div class="image">'+icon+'<div><img class="fotoPrincipal" src="'+image+'"></div></div>';
+            var itemHtml = '<div class="image">'+icon+'<div><img data-id="'+item.hashKey+'" class="fotoPrincipal" src="'+image+'"></div></div>';
             
             arraySessions.map(function(item){
                 $('#'+item).append(itemHtml);
             });
+
+            $(".fotoPrincipal").off("click");
+            $(".fotoPrincipal").on("click", function(){
+                var chave = $(this).attr("data-id");
+                var filmeClicado = null;
+
+                filmes.map(function(item) {
+                    if(item.hashKey == chave){
+                        filmeClicado = item;
+                    }
+
+                    if(filmeClicado != null){
+                        return;
+                    }
+                });
+
+                if(filmeClicado != null){
+                    console.log(item);
+                    $(".descricao").text(item.description);
+
+                    filmeClicado = null;
+                }
+
+                $("#exampleModalCenter").modal('show');
+
+                $(".fecharModal").off("click")
+                $(".fecharModal").on("click", function(){
+                    $("#exampleModalCenter").modal('hide');
+                });
+            });
+
+
+            
         });
     }
     // function ObterFilmes(){

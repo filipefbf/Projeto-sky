@@ -67,7 +67,7 @@ $(document).ready(function(){
                 });
 
                 if(filmeClicado != null){
-                    console.log(item);
+                    //console.log(item);
                     $(".descricao").text(item.description);
 
                     filmeClicado = null;

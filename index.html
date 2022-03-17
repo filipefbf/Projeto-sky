@@ -46,16 +46,16 @@
         <div id="nav">    
             <nav class="container-fluid">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab nav-link" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Filmes</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true">Séries</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Canais</a>
+                <a class="nav-item nav-link active" id="nav-filmes" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">Filmes</a>
+                <a class="nav-item nav-link" id="nav-series-tab" data-toggle="tab" href="#nav-series" role="tab" aria-controls="nav-series" aria-selected="true">Séries</a>
+                <a class="nav-item nav-link" id="nav-canais-tab" data-toggle="tab" href="#nav-canais" role="tab" aria-controls="nav-canais" aria-selected="false">Canais</a>
                 </div>
             </nav>
         </div>
 
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div id="bannerFilmes" class="bannerPrincipal" display="flex">
+                <div id="bannerFilmes" class="bannerPrincipal">
                     <div class="bnbn"><img src="./assets/images/banner1.jpg" width="500" height="250px"></div> 
                     <div class="bnbn"><img src="./assets/images/banner2.jpg" width="500" height="250px"></div>
                     <div class="bnbn"><img src="./assets/images/banner3.jpg" width="500" height="250px"></div>  
@@ -88,74 +88,45 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div id="BannerSeries" class="bannerPrincipal" display="flex">
-                    <img src="./assets/images/banner1.jpg" width="500" height="250px" overflow="hide" margin-left="20px"> 
-                    <img src="./assets/images/banner2.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
-                    <img src="./assets/images/banner3.jpg" width="500" height="250px" overflow="hide" margin-left="20px">  
-                    <img src="./assets/images/banner1.jpg" width="500" height="250px" overflow="hide" margin-left="20px"> 
-                    <img src="./assets/images/banner2.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
-                    <img src="./assets/images/banner3.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
+            <div class="tab-pane fade" id="nav-series" role="tabpanel" aria-labelledby="nav-series">
+                <div id="bannerSeries" class="bannerPrincipal">
+                    <div class="bnbn"><img src="./assets/images/banner1.jpg" width="500" height="250px"></div> 
+                    <div class="bnbn"><img src="./assets/images/banner2.jpg" width="500" height="250px"></div>
+                    <div class="bnbn"><img src="./assets/images/banner3.jpg" width="500" height="250px"></div>  
+                    <div class="bnbn"><img src="./assets/images/banner1.jpg" width="500" height="250px"></div> 
+                    <div class="bnbn"><img src="./assets/images/banner2.jpg" width="500" height="250px"></div>
+                    <div class="bnbn"><img src="./assets/images/banner3.jpg" width="500" height="250px"></div>
                 </div>
-                    <div>
-                        <h4>Os Mais temidos</h4>
-                        <div class="section">
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <h4>Cinema Nacional</h4>
-                        <div class="section">
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <h4>Dc Comics</h4>
-                        <div class="section">
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <h4>Marvel</h4>
-                        <div class="section">
-                            
-                        </div>
-                    </div>
+                <div class="tipos">
+                    <h3 class="title">Os mais temidos</h3>
+                    <div id="sessionMaisTemidos_series" class="sessionSlideSeries"></div>
+                </div>
+                <div class="tipos">
+                    <h3 class="title">Cinema Nacional</h3>
+                    <div id="sessionNacionais_series" class="sessionSlideSeries"></div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">          
-                <div id="bannerCanais" class="bannerPrincipal" display="flex">
-                    <img src="./assets/images/banner1.jpg" width="500" height="250px" overflow="hide" margin-left="20px"> 
-                    <img src="./assets/images/banner2.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
-                    <img src="./assets/images/banner3.jpg" width="500" height="250px" overflow="hide" margin-left="20px">  
-                    <img src="./assets/images/banner1.jpg" width="500" height="250px" overflow="hide" margin-left="20px"> 
-                    <img src="./assets/images/banner2.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
-                    <img src="./assets/images/banner3.jpg" width="500" height="250px" overflow="hide" margin-left="20px">
+            <div class="tab-pane fade" id="nav-canais" role="tabpanel" aria-labelledby="nav-canais-tab">          
+                <div id="bannerCanais" class="bannerPrincipal">
+                    <div class="bnbn"><img src="./assets/images/banner1.jpg" width="500" height="250px"></div> 
+                    <div class="bnbn"><img src="./assets/images/banner2.jpg" width="500" height="250px"></div>
+                    <div class="bnbn"><img src="./assets/images/banner3.jpg" width="500" height="250px"></div>  
+                    <div class="bnbn"><img src="./assets/images/banner1.jpg" width="500" height="250px"></div> 
+                    <div class="bnbn"><img src="./assets/images/banner2.jpg" width="500" height="250px"></div>
+                    <div class="bnbn"><img src="./assets/images/banner3.jpg" width="500" height="250px"></div>
                 </div>
-
-                <div>
-                    <h4>Os Mais temidos</h4>
-                    <div class="sectionUm">
+                <div class="tipos">
+                    <h3 class="title">Dc Comics</h3>
+                    <div id="sessionComics_canais" class="sessionSlideCanais">
                         
                     </div>
                 </div>
-                <div>
-                    <h4>Cinema Nacional</h4>
-                    <div class="section2">
+                <div class="tipos">
+                    <h3 class="title">Marvel</h3>
+                    <div id="sessonMarvel_canais" class="sessionSlideCanais">
                         
                     </div>
                 </div>
-                <div>
-                    <h4>Dc Comics</h4>
-                    <div class="section3">
-                        
-                    </div>
-                </div>
-                <div>
-                    <h4>Marvel</h4>
-                    <div class="section4">
-                        
-                    </div>
-                </div> 
             </div>
         </div>
             
@@ -325,7 +296,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
 
         <div id="ft">
             <div class="menu-ft container-fluid">

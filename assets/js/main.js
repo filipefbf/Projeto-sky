@@ -1,18 +1,46 @@
-var moveInArray = function (arr, from, to) {
-    // Delete the item from it's current position
-    var item = arr.splice(from, 1);
-
-    // Move the item to its new position
-    arr.splice(to, 0, item[0]);
-};
-
 $(document).ready(function(){
-    var urlsky = 'https://sky-frontend.herokuapp.com/movies';
-    var arraySessions = ['sessonMarvel', 'sessionComics', 'sessionNacionais', 'sessionMaisTemidos'];
-
+    var urlsky = 'https://sky-frontend.herokuapp.com/movies'; 
+    var primeiraVezSeries = true;
+    var primeiraVezCanais = true;
+    
     $.get(urlsky,function(data){
+        var arraySessionsFilmes = ['sessonMarvel', 'sessionComics', 'sessionNacionais', 'sessionMaisTemidos'];
 
-        data.contents.map(function(item) {
+        var filmes = data.contents;
+        AddImagensFilmes(filmes, arraySessionsFilmes);
+
+        $("#nav-series-tab").on("click", function(){   
+            if(!primeiraVezSeries) return;
+
+            var arraySessionsSeries = ['sessionMaisTemidos_series','sessionNacionais_series'];
+            AddImagensFilmes(filmes, arraySessionsSeries);
+            setTimeout(function(){
+                HabilitarSlideBanner('bannerSeries');
+                HabilitarSlideSession("sessionSlideSeries");
+            }, 500 );
+
+            primeiraVezSeries = false;
+        }); 
+    
+        $("#nav-canais-tab").on("click", function(){   
+            if(!primeiraVezCanais) return;
+                
+            var arraySessionsCanais = ['sessonMarvel_canais', 'sessionComics_canais'];
+            AddImagensFilmes(filmes, arraySessionsCanais);
+            setTimeout(function(){
+                HabilitarSlideBanner('bannerCanais');
+                HabilitarSlideSession("sessionSlideCanais");
+            }, 500);
+
+            primeiraVezCanais = false;
+        });
+
+        HabilitarSlideBanner('bannerFilmes');
+        HabilitarSlideSession("sessionSlide");
+    });
+
+    function AddImagensFilmes(filmesArray, arraySessions){
+        filmesArray.map(function(item) {
             var icon = (item.isBlocked) ? "" : '<div class="iconCarrinho"><img class="carrinho" src="./assets/images/icon_carrinho.png"></div>';
             
             var image = item.images[0].url;
@@ -22,15 +50,7 @@ $(document).ready(function(){
                 $('#'+item).append(itemHtml);
             });
         });
-
-        // console.log("boa");
-        // await ObterFilmes();
-        
-        // console.log("teste");
-        HabilitarSlideBanner();
-        HabilitarSlideSession();
-    });
-
+    }
     // function ObterFilmes(){
     //     return new Promise((resolve) => {
     //         setTimeout(function(){
@@ -56,14 +76,14 @@ $(document).ready(function(){
     //     });
     // }
 
-    function HabilitarSlideBanner(){
-        $('#bannerFilmes, #BannerSeries, #bannerCanais').slick({                  
+    function HabilitarSlideBanner(ref){
+        $('#'+ref).slick({                  
             centerMode: true,
             centerPadding: '30%',                    
             infinite: true,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 1000,
             dots: true,
             responsive: [
             {
@@ -71,8 +91,8 @@ $(document).ready(function(){
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '20%',
-                    slidesToShow: 3
+                    centerPadding: '25%',
+                   //slidesToShow: 2
                     }
             },
             {
@@ -81,7 +101,7 @@ $(document).ready(function(){
                         arrows: false,
                         centerMode: true,
                         centerPadding: '10%',
-                        slidesToShow: 2
+                        //slidesToShow: 2
                     }
             },
             {
@@ -89,15 +109,15 @@ $(document).ready(function(){
                     settings: {
                         centerMode: true,
                         centerPadding: '1%',
-                        slidesToShow: 1
+                        slidesToShow: 1,
                     }
                 }
             ]
         });
     }
 
-    function HabilitarSlideSession(){
-        $('.sessionSlide').slick({
+    function HabilitarSlideSession(ref){
+        $('.'+ref).slick({
             centerPadding: '60px',
             slidesToShow: 7,
             responsive: [
@@ -116,7 +136,7 @@ $(document).ready(function(){
                         arrows: false,
                         centerMode: true,
                         centerPadding: '40px',
-                        slidesToShow: 3
+                        slidesToShow: 2
                         }
                 },
                 {
@@ -124,11 +144,13 @@ $(document).ready(function(){
                     settings: {
                         centerMode: true,
                         centerPadding: '40px',
-                        slidesToShow: 1
+                        slidesToShow: 2
                     }
 
                 }
             ]
         });
+
+        $('.'+ref).show();
     }
 });      
